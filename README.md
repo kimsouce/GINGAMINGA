@@ -1,6 +1,7 @@
 # GINGAMINGA
 치매 예방을 위한 OX 퀴즈 게임 '긴가민가'
-🟡Frontend 개발 
+
+🟡Frontend 개발
 
 ### 0. 버전관리
 |날짜|폴더명|파일내용|비고|
