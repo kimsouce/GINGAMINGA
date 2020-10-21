@@ -15,26 +15,49 @@
 ### 1.개요
 .
 ├── start.html
+
 |   ├── style.css
+
 ├── modelselect.html
+
 |   ├── style2.css
+
 ├── cateasy.html
+
 ├── cathard.html
+
 ├── easy
+
 |   ├── easyanimal.html
+
 |   ├── easyhealth.html
+
 |   ├── easyplant.html
+
 |   ├── easyrandom.html
+
 |   └── timer4.css
+
 ├── hard
+
 |   ├── hardanimal.html
+
 |   ├── hardhealth.html
+
 |   ├── hardplant.html
+
 |   ├── hardrandom.html
+
 |   └── timer4.css
+
 ├── images
+
 ├── game.html
+
 ├── my_model
+
 |   ├── metadata.json
+
 |   ├── model.json
+
 |   └── weights.bin
