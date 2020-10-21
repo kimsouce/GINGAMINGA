@@ -1,0 +1,84 @@
+h1 {
+  text-align: center;
+  margin-top: 230px;
+  font-size: 40px;
+}
+
+h1 span:nth-child(1){
+  color :#ffdc7c;
+}
+
+h1 span:nth-child(2){
+  color : #dddddd;
+}
+
+h1 span:nth-child(3){
+  color :#ffdc7c;
+}
+
+h1 span:nth-child(4){
+  color :  #dddddd;
+}
+
+body {
+    font-family: sans-serif;
+    display: grid;
+    height: 100vh;
+    place-items: center;
+  }
+  
+  .base-timer {
+    position: relative;
+    width: 300px;
+    height: 300px;
+  }
+  
+  .base-timer__svg {
+    transform: scaleX(-1);
+  }
+  
+  .base-timer__circle {
+    fill: none;
+    stroke: none;
+  }
+  
+  .base-timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
+  }
+  
+  .base-timer__path-remaining {
+    stroke-width: 7px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    fill-rule: nonzero;
+    stroke: currentColor;
+  }
+  
+  .base-timer__path-remaining.green {
+    color: rgb(65, 184, 131);
+  }
+  
+  .base-timer__path-remaining.orange {
+    color: orange;
+  }
+  
+  .base-timer__path-remaining.red {
+    color: red;
+  }
+  
+  .base-timer__label {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+  
+  
+  Resources
