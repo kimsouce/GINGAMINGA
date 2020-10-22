@@ -16,11 +16,19 @@
 ### 1.개요
 
 index number 0: start
+
 index number 1: mode1
+
 index number 2: mode2
+
 index number 3: cat1
+
 index number 4: cat2
+
 index number 5: cat3
+
 index number 6: cat4
+
 index number 7: stand
+
 index number 8: return
