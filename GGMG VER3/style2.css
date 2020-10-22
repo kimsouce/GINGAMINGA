@@ -1,7 +1,10 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 h2 {
     text-align: center;
     margin-top: 120px;
     font-size:50px;
+    font-family:'Nanum Gothic', serif;
 }
 
 h2 span:nth-child(1){
@@ -12,7 +15,7 @@ h2 span:nth-child(1){
 background-image: url(http://p1.pichost.me/i/11/1344899.jpg);
 background-size: cover;
 background-repeat: no-repeat;
-font-family: Arial, sans-serif;
+font-family:'Nanum Gothic', serif;
 font-weight: bold;
 font-size: 20px;
 }
@@ -24,6 +27,7 @@ left: 50%;
 margin-top: -86px;
 margin-left: -89px;
 text-align: center;
+font-family:'Nanum Gothic', serif;
 }
 
 a {
@@ -40,6 +44,7 @@ border-radius: 4px;
 padding: 15px 80px;
 font-weight: bold;
 font-size: 20px;
+font-family:'Nanum Gothic', serif;
 }
 
 a.button {
@@ -57,6 +62,7 @@ h3 {
     text-align: center;
     margin-top: 120px;
     font-size: 50px;
+    font-family:'Nanum Gothic', serif;
 }
 
 h3 span:nth-child(1){
