@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hardrandom</title>
+    <title>easyrandom</title>
     <link rel ="stylesheet" href="timer4.css">
 
 </head>
@@ -79,6 +79,8 @@ function startTimer() {
 
     if (timeLeft === 0) {
       onTimesUp();
+      //이 부분 타이머 10초 후에 창 새로 열어서 욜로 띄우는 부분인 것 같습니다
+      window.open();
     }
   }, 1000);
 }
