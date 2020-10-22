@@ -64,17 +64,17 @@
 			const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
 			// Prediction 2: run input through teachable machine classification model
 			const prediction = await model.predict(posenetOutput);
-			if(prediction[1].probability.toFixed(5)>0.98) {
+			if(prediction[1].probability.toFixed(8)>0.98) {
 				if(status == "stand") {
 					location.href="cateasy.html";
 				}
 				status = "mode1"
-			} else if(prediction[2].probability.toFixed(5)>0.98) {
+			} else if(prediction[2].probability.toFixed(8)>0.98) {
 				if(status == "stand") {
 					location.href="cathard.html";
 				}
 				status = "mode2"
-			} else if(prediction[9].probability.toFixed(5)>0.98) {
+			} else if(prediction[8].probability.toFixed(8)>0.98) {
 				if(status == "stand") {
 					location.href="start.html";
 				}
