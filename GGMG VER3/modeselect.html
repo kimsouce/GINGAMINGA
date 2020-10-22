@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GINGAMINGA_mode</title>
-    <link rel ="stylesheet" href="style2.css">
+	<link rel ="stylesheet" href="style2.css">
+	
 </head>
 <body onload="init()">    
     <h2><div><strong><span>모드 선택</span></strong></div></h2>
-    
-    <div style="text-align: center;"><div><canvas id="canvas"></canvas></div>
+    <script>
+		var testPopUp;
+	 
+		function openPopUp() {"ㅎㅇ",top=200,left=500,width=600,height=300");
+		}
+	 
+		function closePopUp(){
+			testPopUp.close();
+		}
+	 
+		openPopUp();
+		closePopUp();
+	 
+	</script>
+	
+	<div style="text-align: center;">
+	<div><canvas id="canvas"></canvas></div>
 	<div id="label-container"></div>
 	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
@@ -99,6 +115,8 @@
 			} else if(prediction[4].probability.toFixed(2)>0.80) {
 				status = "p5_stand"
 			}
+	
+	
 			// finally draw the poses
 			drawPose(pose);
 		}
@@ -114,18 +132,27 @@
 				}
 			}
 		}
-    </script>
-    <tr>
-        <td colspan="3" align = "right">
-            <div style="text-align: center;">
-            <div class="wrap">
-                <a href="cateasy.html" class="button"> <!--<img src="images/img.jpg" alt="">-->쉬움</a>
-                <a href="cathard.html" class="button">어려움</a>
-                <a href="start.html" class="button">돌아가기</a></td>
-            </div>
-        </td>
+	</script>
+	
 
-    </tr>
+
+    	<tr>
+        	<td colspan="3" align = "right">
+            	<div style="text-align: center;">
+            	<div class="wrap">
+                	<a href="cateasy.html" class="button"> <!---->쉬 움</a>
+                	<a href="cathard.html" class="button">어려움</a>
+                	<a href="start.html" class="button">앞으로</a>
+            	</div>
+        	</td>
+			<td colspan="3" align = "right">
+				<img src="images/modehard.gif" width="180px" height="200px" alt=""> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+				<img src="images/modeeasy.gif" width="180px" height="200px"alt=""> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
+				<img src="images/back.gif" width="180px" height="200px"alt="">
+			</td>
+	    </tr>
 
 </body>
 </html>
