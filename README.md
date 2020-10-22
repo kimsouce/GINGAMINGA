@@ -14,3 +14,13 @@
 |1022|GGMG VER4|teachable machine으로 필요한 동작 학습 및 model 변경, start 페이지 글꼴 및 색상 바꿈, cat 에서 초 지난 후 game 페이지 이동 완료 |#yuha,sy-upload|
 
 ### 1.개요
+
+index number 0: start
+index number 1: mode1
+index number 2: mode2
+index number 3: cat1
+index number 4: cat2
+index number 5: cat3
+index number 6: cat4
+index number 7: stand
+index number 8: return
