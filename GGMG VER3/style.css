@@ -1,11 +1,13 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 h1 {
     text-align: center;
     margin-top: 230px;
     font-size: 80px;
-}
+    font-family:'Nanum Gothic', serif;
+  }
 
 h1 span:nth-child(1){
-    color : #e4fde1;
+    color :  #483D8B;
 }
 h1 span:nth-child(2){
     color : #004222;
@@ -28,7 +30,7 @@ h1 span:nth-child(7){
 
 
 button{
-  background:#00a08f;
+  background : #483D8B;
   color:#fff;
   border:none;
   position:relative;
@@ -38,10 +40,11 @@ button{
   cursor:pointer;
   transition:800ms ease all;
   outline:none;
+  font-family:'Nanum Gothic', serif;
 }
 button:hover{
   background:#fff;
-  color:#00a08f;
+  color:#483D8B;
 }
 button:before,button:after{
   content:'';
@@ -50,7 +53,7 @@ button:before,button:after{
   right:0;
   height:2px;
   width:0;
-  background: #00a08f;
+  background: #483D8B;
   transition:400ms ease all;
 }
 button:after{
@@ -62,4 +65,16 @@ button:after{
 button:hover:before,button:hover:after{
   width:100%;
   transition:800ms ease all;
+}
+
+h4 {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 25px;
+  font-family:'Nanum Gothic', serif;
+}
+
+h4 span:nth-child(1){
+  color :  #BE2457
+  ;
 }
