@@ -3,7 +3,7 @@
 
 🟡Frontend 개발
 
-🧷Using Teachable machine 
+🧷Using Teachable machine : http://teachable.machine.withgoogle.com 
 
 ### 0. 버전관리
 |날짜|폴더명|파일내용|비고|
