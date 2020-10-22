@@ -5,7 +5,7 @@
 
 🧷Using Teachable machine : http://teachable.machine.withgoogle.com 
 
-🛹Please Open With Visual Studio Code !! 
+🛹Please Open With Visual Studio Code, live server!! 
 
 ### 0. 버전관리
 |날짜|폴더명|파일내용|비고|
