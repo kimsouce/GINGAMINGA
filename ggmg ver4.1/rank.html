@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GINGAMINGA_Rank</title>
+</head>
+<body onload="init()">
+  <div style="text-align: center;">
+    <div><canvas id="canvas"></canvas></div>
+    <script type="text/javascript">
+      let webcam
+      
+      async function init() {
+        // Convenience function to setup a webcam
+        const size = 350;
+        const flip = true; // whether to flip the webcam
+        webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+        await webcam.setup(); // request access to the webcam
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+      
+      async function loop(timestamp) {
+          webcam.update(); // update the webcam frame
+          await predict();
+          window.requestAnimationFrame(loop);
+      }
+    </script>
+    
+</body>
+</html>
