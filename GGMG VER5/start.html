@@ -29,7 +29,8 @@
         // the link to your model provided by Teachable Machine export panel
         const URL = "./my_model/";
         let model, webcam, ctx, labelContainer, maxPredictions;
-                async function init() {
+        
+	async function init() {
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
     
@@ -55,6 +56,11 @@
             for (let i = 0; i < maxPredictions; i++) { // and class labels
                 labelContainer.appendChild(document.createElement("div"));
             }
+	    var audio = new Audio('mp3/start.mp3');
+		audio.play();
+            var audio = new Audio('mp3/home1.mp3');
+		audio.play();
+	
         }
     
         async function loop(timestamp) {
