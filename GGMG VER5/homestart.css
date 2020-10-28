@@ -1,12 +1,9 @@
-@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
-
-@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
-
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 h1 {
     text-align: center;
     margin-top: 100px;
-    font-size: 120px;
-    font-family:'NanumSquare', serif;
+    font-size: 80px;
+    font-family:'Nanum Gothic', serif;
   }
 
 h1 span:nth-child(1){
@@ -36,7 +33,7 @@ button{
   background : #483D8B;
   color:#fff;
   border:none;
-  position: relative;
+  position:relative;
   height:60px;
   font-size:1.6em;
   padding:0 2em;
@@ -73,12 +70,11 @@ button:hover:before,button:hover:after{
 h4 {
   text-align: center;
   margin-top: 25px;
-  font-size: 40px;
+  font-size: 25px;
   font-family:'Nanum Gothic', serif;
 }
 
 h4 span:nth-child(1){
-  color :  #dd614a
-  
+  color :  #BE2457
   ;
 }
