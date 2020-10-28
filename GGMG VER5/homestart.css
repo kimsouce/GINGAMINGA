@@ -1,9 +1,12 @@
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
 h1 {
     text-align: center;
     margin-top: 100px;
-    font-size: 200px;
-    font-family:'Nanum Gothic', serif;
+    font-size: 120px;
+    font-family:'NanumSquare', serif;
   }
 
 h1 span:nth-child(1){
