@@ -4,18 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GINGAMINGA</title>
-    <link rel ="stylesheet" href="style.css">
+    <link rel ="stylesheet" href="homestart.css">
 </head>
+<style>
+    body{
+        background-image:url('images/startbackground.jpg');
+        background-color:#eee;
+        background-repeat : no-repeat;
+    }
+
+</style>
 <body onload="init()">
+    
     <tr>
         <td colspan="1" align = "center">
             
 		</td>
-		<h4><span><div>🤸‍♀️ 게임을 시작하려면 동작을 따라해주세요 🤸‍♂️</div></span></h4>
+		<h4><span><div><br><br>🤸‍♀️ 게임을 시작하려면 동작을 따라해주세요 🤸‍♂️</div></span></h4>
         <td colspan="1" align = "center">
             
-            <div style="text-align: center;"><img src="images/start.gif" width="500px" height="500px" alt="">&nbsp;&nbsp;&nbsp;
-                <img src="images/oxline2.png" width="60px" height="500px" alt="">&nbsp;&nbsp;&nbsp;<canvas id = "canvas"></canvas></div>
+            <div style="text-align: center;"><img src="images/start.gif" width="400px" height="400px" alt="">&nbsp;&nbsp;&nbsp;
+                <img src="images/oxline2.png" width="40px" height="400px" alt="">&nbsp;&nbsp;&nbsp;<canvas id = "canvas"></canvas></div>
         </td>
     </tr>
     <div style="text-align: center;">
@@ -30,7 +39,7 @@
         const URL = "./my_model/";
         let model, webcam, ctx, labelContainer, maxPredictions;
         
-	async function init() {
+	    async function init() {
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
     
@@ -41,7 +50,7 @@
             maxPredictions = model.getTotalClasses();
     
             // Convenience function to setup a webcam
-            const size = 500;
+            const size = 400;
             const flip = true; // whether to flip the webcam
             webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
             await webcam.setup(); // request access to the webcam
