@@ -1,0 +1,84 @@
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+h1 {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 120px;
+    font-family:'NanumSquare', serif;
+  }
+
+h1 span:nth-child(1){
+    color :  #483D8B;
+}
+h1 span:nth-child(2){
+    color : #004222;
+}
+h1 span:nth-child(3){
+    color : #6ba292;
+}
+h1 span:nth-child(4){
+    color : #ffdc7c;
+}
+h1 span:nth-child(5){
+    color : #ff9b71;
+}
+h1 span:nth-child(6){
+    color : #dd614a;
+}
+h1 span:nth-child(7){
+    color : #004222;
+}
+
+
+button{
+  background : #483D8B;
+  color:#fff;
+  border:none;
+  position: relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+  font-family:'Nanum Gothic', serif;
+}
+button:hover{
+  background:#fff;
+  color:#483D8B;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #483D8B;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+h4 {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 40px;
+  font-family:'Nanum Gothic', serif;
+}
+
+h4 span:nth-child(1){
+  color :  #dd614a
+  
+  ;
+}
