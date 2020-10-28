@@ -4,42 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GINGAMINGA</title>
-    <link rel ="stylesheet" href="homestart.css">
+    <link rel ="stylesheet" href="style.css">
 </head>
-<style>
-    body{
-        background-image:url('images/startbackground.jpg');
-        background-color:#eee;
-        background-repeat : no-repeat;
-    }
+<body  onload="init()">
 
-</style>
-<body onload="init()">
     
-    <tr>
-        <td colspan="1" align = "center">
-            
-		</td>
-		<h4><span><div><br><br>🤸‍♀️ 게임을 시작하려면 동작을 따라해주세요 🤸‍♂️</div></span></h4>
-        <td colspan="1" align = "center">
-            
-            <div style="text-align: center;"><img src="images/start.gif" width="400px" height="400px" alt="">&nbsp;&nbsp;&nbsp;
-                <img src="images/oxline2.png" width="40px" height="400px" alt="">&nbsp;&nbsp;&nbsp;<canvas id = "canvas"></canvas></div>
-        </td>
-    </tr>
+    <h1><div><strong><span>OX 퀴즈 게임</span><span>&nbsp;&nbsp;&nbsp;"</span><span>긴</span><span>가</span><span>민</span><span>가</span><span>"</span></strong></div></h1>
     <div style="text-align: center;">
+    	<div><canvas id="canvas"></canvas></div>
     <div id="label-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
     <script type="text/javascript">
         // More API functions here:
         // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
-        
+    
         // the link to your model provided by Teachable Machine export panel
         const URL = "./my_model/";
         let model, webcam, ctx, labelContainer, maxPredictions;
-        
-	    async function init() {
+    
+        async function init() {
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
     
@@ -50,7 +34,7 @@
             maxPredictions = model.getTotalClasses();
     
             // Convenience function to setup a webcam
-            const size = 400;
+            const size = 350;
             const flip = true; // whether to flip the webcam
             webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
             await webcam.setup(); // request access to the webcam
@@ -65,11 +49,11 @@
             for (let i = 0; i < maxPredictions; i++) { // and class labels
                 labelContainer.appendChild(document.createElement("div"));
             }
-	    var audio = new Audio('mp3/start.mp3');
-		audio.play();
+
+            var audio = new Audio('mp3/start.mp3');
+			audio.play();
             var audio = new Audio('mp3/home1.mp3');
-		audio.play();
-	
+			audio.play();
         }
     
         async function loop(timestamp) {
@@ -91,15 +75,17 @@
 				}
 				status = "start"
 			}
-        //    for (let i = 0; i < maxPredictions; i++) {
-        //    const classPrediction =
-        //        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-        //    labelContainer.childNodes[i].innerHTML = classPrediction;
-        //}
-
-            // finally draw the poses
-            drawPose();
+        
+            for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
         }
+        
+            // finally draw the poses
+            drawPose(pose);
+        }
+    
         function drawPose(pose) {
             if (webcam.canvas) {
                 ctx.drawImage(webcam.canvas, 0, 0);
@@ -112,10 +98,20 @@
             }
         }
     </script>
-
-    <a href="modeselect.html">
-        <div style="text-align: center;">
-        <button type="button">게임 시작</button><br></div>
-    </a>
+        
+    
+    <tr>
+        <td colspan="1" align = "right">
+            <a href="modeselect.html">
+				<button type="button">게임 시작</button><br>
+			</a>
+		</td>
+		<h4><span><div>※ 게임을 시작하려면 동작을 따라해주세요 ※</div></span></h4>
+        <td colspan="1" align = "right">
+            <img src="images/start.gif" width="130px" height="150px" alt="">
+        </td>
+    </tr>
+		
+	
 </body>
 </html>
