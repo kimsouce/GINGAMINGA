@@ -2,80 +2,179 @@
 
 <head>
     <style>
-    /* CSS comes here */
-    #video {
-        border: 1px solid black;
-        width: 320px;
-        height: 240px;
-        transform: rotateY(180deg);
-        -webkit-transform:rotateY(180deg); /* Safari and Chrome */
-    }
+        /* CSS comes here */
+        #video {
+            border: 1px solid black;
+            width: 400px;
+            height: 320px;
+            transform: rotateY(180deg);
+            -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+        }
+    
+        #photo {
+            border: 1px solid black;
+            width: 400px;
+            height: 320px;
+            transform: rotateY(180deg);
+            -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+        }
+    
+        #canvas {
+            display: none;
+            transform: rotateY(180deg);
+            -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+        }
+    
+        .camera {
+            width: 400px;
+            display: inline;
+            transform: rotateY(180deg);
+            -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+        }
+    
+        .output {
+            width: 400px;
+            display: inline;
+            transform: rotateY(180deg);
+            -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+        }
+    
+        #startbutton {
+            display: block;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            bottom: 36px;
+            padding: 5px;
+            background-color: #6a67ce;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 1.0);
+            cursor: pointer;
+        }
 
-    #photo {
-        border: 1px solid black;
-        width: 320px;
-        height: 240px;
-    }
-
-    #canvas {
-        display: none;
-        transform: rotateY(180deg);
-        -webkit-transform:rotateY(180deg); /* Safari and Chrome */
-    }
-
-    .camera {
-        width: 300px;
-        display: inline-block;
-    }
-
-    .output {
-        width: 300px;
-        display: inline-block;
-    }
-
-    #startbutton {
-        display: block;
-        position: relative;
-        margin-left: auto;
-        margin-right: auto;
-        bottom: 36px;
-        padding: 5px;
-        background-color: #6a67ce;
-        border: 1px solid rgba(255, 255, 255, 0.7);
-        font-size: 14px;
-        color: rgba(255, 255, 255, 1.0);
-        cursor: pointer;
-    }
-
-    .contentarea {
-        font-size: 16px;
-        font-family: Nanum Gothic;
-        text-align: center;
-    }
-    </style>
+        #savebutton {
+            display: block;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            bottom: 36px;
+            padding: 5px;
+            background-color: #6a67ce;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 1.0);
+            cursor: pointer;
+        }
+    
+        .contentarea1 {
+            font-size: 16px;
+            font-family: Nanum Gothic;
+            text-align: center;
+        }
+        .contentarea2 {
+            margin-top: 100px;
+            margin-left: -500px;
+            font-size: 16px;
+            font-family: Nanum Gothic;
+            text-align: center;
+        }
+        .contentarea3 {
+            margin-top: -360px;
+            margin-left: 580px;
+            font-size: 16px;
+            font-family: Nanum Gothic;
+            text-align: center;
+        }
+        .contentarea4 {
+            margin-top: 0px;
+            margin-left:-280px;
+            font-color: #666666;
+            font-size: 60px;
+            font-family: Nanum Gothic;
+            text-align: center;
+        }
+        .contentarea5 {
+            margin-top:-100px;
+            margin-left:150px;
+            font-size: 35px;
+            font-family: Nanum Gothic;
+            text-align: center;
+        }
+        </style>
     <title>GINGAMINGA_Rank</title>
 </head>
+<style>
+    body{
+        background-image:url('images/catselect.jpg');
+        background-color:#eee;
+        background-repeat : no-repeat;
+    }
 
-<body>
-    <div class="contentarea">
+</style>
+<body onload="bgm()">
+
+<script>
+    //async function bgm() {
+    //    var audio = new Audio('mp3/rank.mp3');
+	//	audio.play();
+    //}
+</script>
+    <!--제목 CSS 적용-->
+    <div class="contentarea1">
         <h1>
-            <p style="font-size:40px; color: #483D8B">📸랭크 등록을 위해 사진을 찍습니다😉</p>
+            <p style="font-size:40px; color: #483D8B; margin-top:100px;">📸포토존😉</p>
         </h1>
+    </div>
+    <!--웹캠 CSS 적용-->
+    <div class="contentarea2">
         <div class="camera">
             <video id="video">Video stream not available.</video>
         </div>
         <div><button id="startbutton">사진찍기</button></div>
+    </div>
+    <!--캔버스, 포토 CSS 적용-->
+    <div class="contentarea3">
         <canvas id="canvas"></canvas>
         <div class="output">
             <img id="photo" alt="The screen capture will appear in this box.">
         </div>
+        <div class="save">
+            <div> <a href="leaderboard.html" onclick="savepicture()"><button id="savebutton">저장하기</button></a></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="reimg.js"></script>
+    <!--타이머 CSS 적용-->
+    <div class="contentarea4">
+        <script language="JavaScript">
+            var SetTime = 5;		// 최초 설정 시간(기본 : 초)
+            function msg_time() {	// 1초씩 카운트
+                m = Math.floor(SetTime % 60);	// 남은 시간 계산
+                var msg = m;
+                document.all.ViewTimer.innerHTML = msg;		// div 영역에 보여줌      
+                SetTime--;					// 1초씩 감소
+                if (SetTime < 0) {			// 시간이 종료 되었으면..
+                    clearInterval(tid);		// 타이머 해제
+                    alert("다시 촬영하려면 '사진찍기' 버튼을 눌러주세요!");
+                }  
+            }
+            window.onload = function TimerStart(){ tid=setInterval('msg_time()',1000) };
+        </script>    
+        <div id="ViewTimer"></div>
+        <div> <a href="leaderboard.html"></a></div>
+    </div>
+    <!--안내문구 CSS 적용-->
+    <div class="contentarea5">
+        <h2>
+            <p style="font-size:30px; color: #666666; margin-top:0px;">초 뒤에 사진을 찍습니다✨</p>
+        </h2>
     </div>
 
     <script>
     /* JS comes here */
     (function() {
 
-        var width = 320; // We will scale the photo width to this
+        var width = 400; // We will scale the photo width to this
         var height = 0; // This will be computed based on the input stream
 
         var streaming = false;
@@ -119,6 +218,12 @@
                 }
             }, false);
 
+            // 처음 1회 자동 사진 촬영
+            setTimeout(function(){
+                takepicture();
+            },5000);
+
+            // 버튼 클릭하여 사진 촬영
             startbutton.addEventListener('click', function(ev) {
                 takepicture();
                 ev.preventDefault();
@@ -144,16 +249,19 @@
                 canvas.height = height;
                 context.drawImage(video, 0, 0, width, height);
 
-
                 var data = canvas.toDataURL('image/png');
                 photo.setAttribute('src', data);
+
             } else {
                 clearphoto();
             }
-
         }
         window.addEventListener('load', startup, false);
     })();
+
+        function savepicture() {
+            ReImg.fromCanvas(document.querySelector('canvas')).downloadPng();
+        }
     </script>
 
 </body>
