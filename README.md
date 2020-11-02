@@ -17,6 +17,6 @@
 |1023|ggmg ver4.1|home : 로고 start : 시작 페이지, modelselect : 모드 설정, cateasy-easy/ cathard-hard : 카테고리 설정, game : 게임 실행 rank : 랭크등록|카카오 음성 api로 안내음성 추가 #yuha,sy-update #sy-upload|
 |1026|GGMG VER5|동일|#yuha-upload #sy-update|
 |1028|GGMG VER6|home : 로고 start : 시작 페이지, modelselect : 모드 설정, cateasy-easy/ cathard-hard : 카테고리 설정, game : 게임 실행 rank : 랭크등록 leaderboard: 순위보기|#yuha-upload #sy-modified|
-
+|1102| ggmg ver7| gamepage 랜덤함수 적용| #yuha-update #sy-upload|
 ### 1.개요
 
