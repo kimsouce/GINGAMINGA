@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Home</title>
+    <link rel ="stylesheet" href="homestart.css">
+    <style>
+        body{
+            background-image:url('images/homebackground.jpg');
+            background-color:#eee;
+            background-repeat : no-repeat;
+        }
+
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+
+<!--로딩중 CSS-->
+<style>
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+.loader4{
+    position: relative;
+    margin-top: -100px;
+    width: 150px;
+    height: 40px;
+    top: 10%;
+    top: -webkit-calc(50% - 10px);
+    top: calc(50% - 10px);
+    left: 25%;
+    left: -webkit-calc(50% - 75px);
+    left: calc(50% - 75px);
+
+    background-color: rgba(255,255,255,0.2);
+}
+
+.loader4:before{
+    content: "";
+    position: absolute;
+    background-color:#483D8B;
+    top: 0px;
+    left: 0px;
+    height: 40px;
+    width: 0px;
+    z-index: 0;
+    opacity: 1;
+    -webkit-transform-origin:  100% 0%;
+            transform-origin:  100% 0% ;
+    -webkit-animation: loader4 10s ease-in-out infinite;
+            animation: loader4 10s ease-in-out infinite;
+}
+
+.loader4:after{
+    content: " 로딩중입니다...";
+    color:#483D8B;
+    font-family:'NanumSquare';
+    font-weight: 800;
+    font-size: 20px;
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    line-height: 20px;
+    left: 10px;
+    top: 10px;
+}
+
+@-webkit-keyframes loader4{
+    0%{width: 0px;}
+    70%{width: 100%; opacity: 1;}
+    90%{opacity: 0; width: 100%;}
+    100%{opacity: 0;width: 0px;}
+}
+
+@keyframes loader4{
+    0%{width: 0px;}
+    70%{width: 100%; opacity: 1;}
+    90%{opacity: 0; width: 100%;}
+    100%{opacity: 0;width: 0px;}
+}
+
+</style>
+
+</head>
+
+<body onload="bgm()">
+    <h1><h1><strong><span>OX 퀴즈 게임</span><span><br></span><span><img name="logo" src="images/logo.jpg" width="800" height="400" align='center'></span><span></span></strong></h1></h1>
+    <div style="text-align: center;"></div><br><br><br><br><br>
+    <script>
+
+    async function move_page(){
+        location.href="start.html";
+    }
+        setTimeout("move_page()", 7000);
+    </script>    
+
+
+<div class="loader4"></div>
+
+
+ </div>
+</body>
+</html>
