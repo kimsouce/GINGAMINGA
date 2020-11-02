@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Game</title>
+    <link rel ="stylesheet" href="game.css">
+    <style>
+        body{
+            background-image:url('images/hardgame.jpg');
+            background-color:#eee;
+            background-repeat : no-repeat;
+        }
+
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    "canvas");
+    canvas.width = size; canvas.height = size;
+    ctx = canvas.getContext("2d");
+    labelContainer = document.getElementById("label-container");
+    for (let i = 0; i < maxPredictions; i++) { // and class labels
+        labelContainer.appendChild(document.createElement("div"));
+    }
+    var audio = new Audio('mp3/select1.mp3');
+    audio.play();
+}
+
+async function loop(timestamp) {
+    webcam.update(); // update the webcam frame
+    await predict();
+    window.requestAnimationFrame(loop);
+}
+
+var status = "stand"
+async function predict() {
+    // Prediction #1: run input through posenet
+    // estimatePose can take in an image, video or canvas html element
+    const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+    // Prediction 2: run input through teachable machine classification model
+    const prediction = await model.predict(posenetOutput);
+    if(prediction[1].probability.toFixed(8)>0.98) {
+        if(status == "stand") {
+            location.href="###";
+        }
+        status = "mode1"
+    } else if(prediction[2].probability.toFixed(8)>0.98) {
+        if(status == "stand") {
+            location.href="###";
+        }
+        status = "mode2"
+    } else if(prediction[8].probability.toFixed(8)>0.98) {
+        if(status == "stand") {
+            location.href="###";
+        }
+        status = "return"
+    }
+
+//	 for (let i = 0; i < maxPredictions; i++) {
+//    const classPrediction =
+//        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+//    labelContainer.childNodes[i].innerHTML = classPrediction;
+//}
+
+    // finally draw the poses
+    
+    drawPose();
+}
+
+function drawPose(pose) {
+    if (webcam.canvas) {
+        ctx.drawImage(webcam.canvas, 0, 0);
+        // draw the keypoints and skeleton
+        if (pose) {
+            const minPartConfidence = 0.5;
+            tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
+            tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
+        }
+    }
+}
+</script>
+    <script>
+    </script>    

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GINGAMINGA_catselect</title>
+    <link rel ="stylesheet" href="cat.css">
+</head>
+<style>
+	body{
+		background-image:url('images/catselect.jpg');
+		background-color:#eee;
+		background-repeat : no-repeat;
+	}
+	</style>
+<body onload="init()">
+    <h3><div><strong><span>카테고리 선택</span></strong></div></h3>
+    <div style="text-align: center;">
+        <!--<div><canvas id="canvas"></canvas></div>-->
+		<div id="label-container"></div>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+	<script type="text/javascript">
+		// More API functions here:
+		// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
+
+		// the link to your model provided by Teachable Machine export panel
+		const URL = "./my_model/";
+		let model, webcam, ctx, labelContainer, maxPredictions;
+		setTimeout("init()",3000);
+		async function init() {
+			const modelURL = URL + "model.json";
+			const metadataURL = URL + "metadata.json";
+
+			// load the model and metadata
+			// Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+			// Note: the pose library adds a tmPose object to your window (window.tmPose)
+			
+			model = await tmPose.load(modelURL, metadataURL);
+			maxPredictions = model.getTotalClasses();
+
+			// Convenience function to setup a webcam
+			const size = 350;
+			const flip = true; // whether to flip the webcam
+			webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+			await webcam.setup(); // request access to the webcam
+			await webcam.play();
+			window.requestAnimationFrame(loop);
+
+			// append/get elements to the DOM
+			const canvas = document.getElementById("canvas");
+			canvas.width = size; canvas.height = size;
+			ctx = canvas.getContext("2d");
+			labelContainer = document.getElementById("label-container");
+			for (let i = 0; i < maxPredictions; i++) { // and class labels
+				labelContainer.appendChild(document.createElement("div"));
+			}
+			var audio = new Audio('mp3/select1.mp3');
+			audio.play();
+		}
+
+		async function loop(timestamp) {
+			webcam.update(); // update the webcam frame
+			await predict();
+			window.requestAnimationFrame(loop);
+		}
+
+		var status = "stand"
+		async function predict() {
+			// Prediction #1: run input through posenet
+			// estimatePose can take in an image, video or canvas html element
+			const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+			// Prediction 2: run input through teachable machine classification model
+			const prediction = await model.predict(posenetOutput);
+			if(prediction[1].probability.toFixed(8)>0.98) {
+				if(status == "stand") {
+					location.href="###";
+				}
+				status = "mod1"
+			} else if(prediction[2].probability.toFixed(8)>0.98) {
+				if(status == "stand") {
+					location.href="###";
+				}
+				status = "mod2"
+			} else if(prediction[8].probability.toFixed(8)>0.98) {
+				if(status == "stand") {
+					location.href="###";
+				}
+				status = "return"
+			}
+
+		//	 for (let i = 0; i < maxPredictions; i++) {
+        //    const classPrediction =
+        //        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+        //    labelContainer.childNodes[i].innerHTML = classPrediction;
+        //}
+
+			// finally draw the poses
+			
+			drawPose();
+		}
+
+		function drawPose(pose) {
+			if (webcam.canvas) {
+				ctx.drawImage(webcam.canvas, 0, 0);
+				// draw the keypoints and skeleton
+				if (pose) {
+					const minPartConfidence = 0.5;
+					tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
+					tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
+				}
+			}
+		}
+	</script>
+		
+        <tr>
+        	<td colspan="5" align = "left">
+                <div class="wrap">
+                    <a href="hard/hardanimal.html" class="button">동물</a> 
+                    <a href="hard/hardplant.html" class="button">식물</a>
+                    <a href="hard/hardhealth.html" class="button">건강</a> 
+                    <a href="hard/hardrandom.html" class="button">랜덤</a>
+					<a href="modeselect.html" class="button">뒤로</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<b href="" class="button">    📸   </b>
+                </div>
+            </td>
+			<td colspan="5" align = "right">
+                &nbsp;&nbsp;<img src="images/mod1.gif" width="160px" height="350px" alt="">
+                <img src="images/mod2.gif" width="160px" height="350px" alt="">
+                <img src="images/cat3.gif" width="160px" height="350px" alt="">
+                <img src="images/cat4.gif" width="160px" height="350px" alt="">
+                <img src="images/return.jpg" width="160px" height="350px" alt="">
+				<img src="images/oxline2.png" width="40px" height="350px" alt="">&nbsp;<canvas id="canvas"></canvas>
+			</td>
+        </tr>
+</body>
+</html>

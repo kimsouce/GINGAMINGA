@@ -1,0 +1,160 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+h2 {
+    text-align: center;
+    margin-top: 120px;
+    font-size:40px;
+    font-family:'NanumSquare';
+    font-style : bold;
+}
+
+h2 span:nth-child(1){
+    color : #ff9d00ff;
+}
+
+
+background-image: url(http://p1.pichost.me/i/11/1344899.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+font-family:'NanumSquRe', serif;
+font-weight: bold;
+font-size: 20px;
+}
+
+.wrap {
+position: absolute;
+top: 20px;
+left: 20px;
+margin-top: 0px;
+margin-left: 0;
+text-align: center;
+font-family:'NanumSquare', serif;
+}
+
+a {
+-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+display: inline-table;
+margin: 1px;
+max-width: 180px;
+text-decoration: none;
+border-radius: 4px;
+padding: 15px 80px;
+font-weight: bold;
+font-size: 20px;
+font-family:'NanumSquare', serif;
+}
+b {
+-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+display: inline-table;
+margin: 5px;
+max-width: 400  px;
+text-decoration: none;
+border-radius: 4px;
+padding: 15px 80px;
+font-weight: bold;
+font-size: 20px;
+font-family:'NanumSquare', serif;
+}
+c {
+    -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    display: inline-table;
+    margin: 1px;
+    max-width: 160px;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: 15px 50px;
+    font-weight: bold;
+    font-size: 20px;
+    font-family:'NanumSquare', serif;
+    }
+b.button {
+    color:#ff9d00ff;
+    box-shadow: #ff9d00ff 0 0px 0px 40px inset;
+    }
+
+a.button {
+color: #ff9d00ff;
+box-shadow: #ff9d00ff 0 0px 0px 2px inset;
+}
+
+a.button:hover {
+color: rgba(255, 255, 255, 0.85);
+box-shadow: #ff9d00ff 0 0px 0px 40px inset;
+}
+
+c.button {
+    color: rgba(255, 150, 0, 0.55);
+    box-shadow: rgba(255, 150, 0, 0.55) 0 0px 0px 2px inset;
+    }
+    
+c.button:hover {
+    color: rgba(255, 255, 255, 0.85);
+    box-shadow: rgba(255, 150, 0, 0.55) 0 0px 0px 40px inset;
+    }
+
+h3 {
+    text-align: left;
+    margin-top:75px;
+    font-size: 30px;
+    font-family:'NanumSquare', serif;
+}
+h4 {
+    text-align: left;
+    margin-top:0px;
+    font-size: 30px;
+    font-family:'NanumSquare', serif;
+}
+h3 span:nth-child(1){
+    color : #004222;
+
+    
+}
+.base-timer {
+    position: relative;
+    height: 300px;
+    width: 300px;
+  }
+  
+  /* Removes SVG styling that would hide the time label */
+  .base-timer__circle {
+    fill: none;
+    stroke: none;
+  }
+  
+  /* The SVG path that displays the timer's progress */
+  .base-timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
+  }
+
+  .base-timer__label {
+    position: absolute;
+    
+    /* Size should match the parent container */
+    width: 300px;
+    height: 300px;
+    
+    /* Keep the label aligned to the top */
+    top: 0;
+    
+    /* Create a flexible box that centers content vertically and horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    /* Sort of an arbitrary number; adjust to your liking */
+    font-size: 48px;
+  }
