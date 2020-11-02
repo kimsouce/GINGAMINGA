@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Game</title>
+    <link rel ="stylesheet" href="game.css">
+    <style>
+        body{
+            background-image:url('images/hardgame.jpg');
+            background-color:#eee;
+            background-repeat : no-repeat;
+        } 
+    </style>
+
+
+</head>
+
+<body onload.init()>
+    <div id="label-container"></div>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+	<script type="text/javascript">
+		// More API functions here:
+		// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
+
+		// the link to your model provided by Teachable Machine export panel
+		const URL = "./my_model/";
+		let model, webcam, ctx, labelContainer, maxPredictions;
+		setTimeout("init()",3000);
+		async function init() {
+			const modelURL = URL + "model.json";
+			const metadataURL = URL + "metadata.json";
+
+			// load the model and metadata
+			// Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+			// Note: the pose library adds a tmPose object to your window (window.tmPose)
+			
+			model = await tmPose.load(modelURL, metadataURL);
+			maxPredictions = model.getTotalClasses();
+
+			// Convenience function to setup a webcam
+			const size = 300;
+			const flip = true; // whether to flip the webcam
+			webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+			await webcam.setup(); // request access to the webcam
+			await webcam.play();
+			window.requestAnimationFrame(loop);
+
+			// append/get elements to the DOM
+			const canvas = document.getElementById("canvas");
+			canvas.width = size; canvas.height = size;
+			ctx = canvas.getContext("2d");
+			labelContainer = document.getElementById("label-container");
+			for (let i = 0; i < maxPredictions; i++) { // and class labels
+				labelContainer.appendChild(document.createElement("div"));
+			}
+			var audio = new Audio('mp3/select1.mp3');
+			audio.play();
+		}
+
+		async function loop(timestamp) {
+			webcam.update(); // update the webcam frame
+			await predict();
+			window.requestAnimationFrame(loop);
+		}
+
+		var status = "stand"
+		async function predict() {
+			// Prediction #1: run input through posenet
+			// estimatePose can take in an image, video or canvas html element
+			const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+			// Prediction 2: run input through teachable machine classification model
+			const prediction = await model.predict(posenetOutput);
+			if(prediction[1].probability.toFixed(8)>0.98) {
+				if(status == "stand") {
+					location.href="###";
+				}
+				status = "mode1"
+			} else if(prediction[2].probability.toFixed(8)>0.98) {
+				if(status == "stand") {
+					location.href="###";
+				}
+				status = "mode2"
+			} else if(prediction[8].probability.toFixed(8)>0.98) {
+				if(status == "stand") {
+					location.href="###";
+				}
+				status = "return"
+			}
+
+		//	 for (let i = 0; i < maxPredictions; i++) {
+        //    const classPrediction =
+        //        prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+        //    labelContainer.childNodes[i].innerHTML = classPrediction;
+        //}
+
+			// finally draw the poses
+			
+			drawPose();
+		}
+
+		function drawPose(pose) {
+			if (webcam.canvas) {
+				ctx.drawImage(webcam.canvas, 0, 0);
+				// draw the keypoints and skeleton
+				if (pose) {
+					const minPartConfidence = 0.5;
+					tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
+					tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
+				}
+			}
+		}
+	</script>
+
+    <!--<script src = "practice.js" defer></script>-->
+<br><h2><script>
+var animal = [
+    [ '북극곰은 [　　　]을/를 잔다','여름잠','겨울잠', '동물이 겨울에 잠을 자는 이유는 먹이가 없기 때문이다'],
+    [ '하마는 [　　　]의 일종이다','돼지','말', '하마는 돼지의 일종이다'],
+    [ '물고기는 [　　　]을/를 한다','기침','재채기', '물고기는 물이 오염될 수록 기침을 한다'],
+    [ '[　　　]는 이가 없다','두꺼비','개구리', '개구리는 위턱에만 이가 있고 두꺼비는 이가 아예 없다'],
+    [ '철새는 [　　　] 잠을 잔다','이동 중에','잠깐 멈춰서', '뇌의 절반씩 교대로 잠을 자는 가수면 상태에서 비행한다'],
+    [ '박쥐는 [　　　] 동물이다','포유류','조류', '박쥐는 알이 아닌 새끼를 낳는 동물이며, 포유류 중 유일하게 새처럼 날아다닌다'],
+    [ '상어는 고래와 같은 [　　　] 동물이다','포유류','어류', '상어는 알을 낳으므로 포유류가 아닌 어류이다'],
+    [ '캥거루는 뒤로 뛸 수 [　　　]','없다','있다', '캥거루의 신체 구조 상 뒤로 뛸 수 없다'],
+    [ '토끼는 주인이 부르는 이름을 [　　　]다','알아듣는','못 알아듣는', '토끼의 아이큐는 50정도로 알려져 있으며 훈련을 시키면 자신의 이름을 알아듣는 것이 가능하다'],
+    [ '병아리는 [　　　]이 있다','배꼽','담낭','병아리는 배꼽을 통해 난황 속의 영양분을 먹고 자란다'],
+    [ '코알라는 [　　　]이 있다','지문','속눈썹','코알라의 손바닥 곡선 패턴은 사람의 것과 매우 흡사하다'],
+    [ '한국 돌고래와 미국 돌고래는 말이 [　　　]다','통하지 않는','통한', '돌고래는 약 700가지의 소리를 가지고 있으며 그것을 조합해 언어로 사용한다. 지역에 영향을 받기 때문에 타 지역 돌고래와는 의사 교환이 안된다'],
+    [ '사람의 세포 수는 개미의 세포 수 [　　　]','와 똑같다','보다 크다', '양의 차이일 뿐 세포의 크기는 모두 같다'],
+    [ '펭귄은 [　　　]을 느낄 수 있다','짠맛','단맛','단맛, 쓴맛, 감칠맛을 느낄 수 있는 수용체 유전자가 작동하지 않아 맛을 느끼지 못한다'],
+    [ '개는 [　　　]이다','적록생맹','완전색맹','시각 중추에서 색을 담당하는 원추세포의 수가 인간보다 적다']
+];
+
+var j = Math.random()
+var i = Math.round(j*14);
+var k = Math.round(j+1);
+if(k === 1) {
+    var q = 2
+}else{
+    var q = 1
+}
+
+document.write( '<p>' + animal[i][0] + '</p>' );</script></h2>
+<h3><script>
+document.write( '<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + animal[i][k]); 
+
+</script></h3>
+<h4><script>document.write('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + animal[i][q] + '</p>' );
+
+</script></h4>
+<script>document.write('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src= "images/mod1.gif" width="300px" height="300px" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<canvas id="canvas">&nbsp;&nbsp;<img src="images/mod1.gif" width="300px" height="300px" alt="">')</script>
+    </script>
+    <script>
+        
+    </script>    
+</body>
