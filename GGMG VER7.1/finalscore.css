@@ -1,0 +1,35 @@
+  
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+
+
+h1 {
+    text-align: center;
+    margin-top: 120px;
+    font-size:40px;
+    font-family:'NanumSquare';
+    font-style : bold;
+}
+h1 span:nth-child(1){
+    color : #483D8B;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 120px;
+    font-size:40px;
+    font-family:'NanumSquare';
+    font-style : bold;
+}
+
+h2 span:nth-child(1){
+    color : #483D8B;
+}
+
+h2 span:nth-child(2){
+    color : #ff9d00ff;
+}
+
+h2 span:nth-child(3){
+    color : #483D8B;
+}
