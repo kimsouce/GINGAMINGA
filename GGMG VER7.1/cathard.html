@@ -25,7 +25,7 @@
 		// https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
 		// the link to your model provided by Teachable Machine export panel
-		const URL = "./my_model/";
+		const URL = "./cat_model/";
 		let model, webcam, ctx, labelContainer, maxPredictions;
 		setTimeout("init()",3000);
 		async function init() {
@@ -127,21 +127,19 @@
 	</script>
 		
         <tr>
-        	<td colspan="5" align = "left">
+        	<td colspan="4" align = "left">
                 <div class="wrap">
                     <a href="hardanimal.html" class="button">동물</a> 
                     <a href="hardplant.html" class="button">식물</a>
                     <a href="hardhealth.html" class="button">건강</a> 
-                    <a href="hardrandom.html" class="button">랜덤</a>
 					<a href="modeselect.html" class="button">뒤로</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<b href="" class="button">    📸   </b>
                 </div>
             </td>
-			<td colspan="5" align = "right">
+			<td colspan="4" align = "right">
                 &nbsp;&nbsp;<img src="images/mod1.gif" width="160px" height="350px" alt="">
                 <img src="images/mod2.gif" width="160px" height="350px" alt="">
                 <img src="images/cat3.gif" width="160px" height="350px" alt="">
-                <img src="images/cat4.gif" width="160px" height="350px" alt="">
                 <img src="images/return.jpg" width="160px" height="350px" alt="">
 				<img src="images/oxline2.png" width="40px" height="350px" alt="">&nbsp;<canvas id="canvas"></canvas>
 			</td>
